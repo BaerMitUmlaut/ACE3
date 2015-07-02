@@ -17,7 +17,7 @@
 
 private ["_mode", "_hint"];
 
-_mode = missionNamespace getVariable [QGVAR(currentThrowMode), 0];
+_mode = missionNamespace getVariable [QGVAR(currentThrowMode), 4];
 
 if (_mode == 4) then {
     _mode = 0;
@@ -25,20 +25,7 @@ if (_mode == 4) then {
     _mode = _mode + 1;
 };
 
-// ROLL GRENADE DOESN'T WORK RIGHT NOW
-if (_mode == 3) then {
-    _mode = 4;
-};
-
-_hint = [
-localize "STR_ACE_Grenades_NormalThrow",
-localize "STR_ACE_Grenades_HighThrow",
-localize "STR_ACE_Grenades_PreciseThrow",
-localize "STR_ACE_Grenades_RollGrenade",
-localize "STR_ACE_Grenades_DropGrenade"
-] select _mode;
-
-[_hint] call EFUNC(common,displayTextStructured);
+[(str _mode), ("\z\ace\addons\grenades\UI\grenadeIndicator" + (str _mode) + ".paa")] call EFUNC(common,displayTextPicture);
 
 GVAR(currentThrowMode) = _mode;
 

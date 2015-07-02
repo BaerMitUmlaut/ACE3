@@ -21,7 +21,7 @@
  */
 #include "script_component.hpp"
 
-private ["_unit", "_weapon", "_projectile", "_mode", "_fuzeTime"];
+private ["_unit", "_weapon", "_projectile", "_mode", "_velocity", "_fuzeTime"];
 
 _unit = _this select 0;
 _weapon = _this select 1;
@@ -30,38 +30,13 @@ _projectile = _this select 6;
 if (_unit != ACE_player) exitWith {};
 if (_weapon != "Throw") exitWith {};
 
-_mode = missionNamespace getVariable [QGVAR(currentThrowMode), 0];
+_mode = missionNamespace getVariable [QGVAR(currentThrowMode), 4];
 
-if (_mode != 0) then {
-    private "_velocity";
+_velocity = velocity _projectile;
 
-    _velocity = velocity _projectile;
+_velocity = _velocity vectorMultiply ((_mode * 0.25) max 0.1);
 
-    switch (_mode) do {
-        //high throw
-    case 1 : {
-            _velocity = [
-            0.5 * (_velocity select 0),
-            0.5 * (_velocity select 1),
-            [0, 0, 0] distance (_velocity vectorMultiply 0.5)
-            ];
-        };
-        //precise throw
-    case 2 : {
-            _velocity = (_unit weaponDirection _weapon) vectorMultiply (vectorMagnitude _velocity);
-        };
-        //roll grande
-    case 3 : {
-            //@todo
-        };
-        //drop grenade
-    case 4 : {
-            _velocity = [0, 0, 0];
-        };
-    };
-
-    _projectile setVelocity _velocity;
-};
+_projectile setVelocity _velocity;
 
 if (typeOf _projectile == "ACE_G_M84") then {
     _fuzeTime = getNumber (configFile >> "CfgAmmo" >> typeOf _projectile >> "fuseDistance");
