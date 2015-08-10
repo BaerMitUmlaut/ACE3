@@ -2,6 +2,16 @@
 
 ADDON = false;
 
-PREP(empty);
+PREP(dialogExit);
+PREP(dialogInit);
+PREP(initCamera);
+PREP(onListSelect);
+PREP(onMouseDown);
+PREP(onMouseMove);
+PREP(onMouseUp);
+PREP(onThrow);
+PREP(pickupExplorer);
+PREP(replaceProjectile);
+PREP(replaceProjectilePFH);
 
 ADDON = true;

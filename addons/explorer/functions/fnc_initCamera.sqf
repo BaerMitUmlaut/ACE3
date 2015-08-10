@@ -1,21 +1,29 @@
 #include "script_component.hpp"
-private ["_explorer"];
+private ["_explorer", "_dirPitchBank"];
 
 _explorer = _this select 0;
+_explorer hideObject true;
+GVAR(activeExplorer) = _explorer;
 
+_dirPitchBank = _explorer getVariable [QGVAR(cameraDirPitchBank), []];
+if (count (_dirPitchBank) != 3) then {
+	_dirPitchBank = _explorer setVariable [QGVAR(cameraDirPitchBank), [direction _explorer, 45, 0]];
+};
 
-hideObject _explorer; //hide explorer so it doesn't interfere with the camera
+GVAR(activeCamera) = "Camera" camCreate [0,0,0];
+GVAR(activeCamera) setPosASL (getPosASL _explorer);
 
-GVAR(cam) = "Camera" camCreate [0,0,0];
-GVAR(cam) setPosATL (getPosATL _explorer);
+GVAR(activeCamera) camSetFov 2;
+GVAR(activeCamera) cameraEffect ["Internal", "BACK"];
+GVAR(activeCamera) camCommit 0;
 
-GVAR(camDir) = random 360;
-GVAR(camPitch) = random 360;
-GVAR(camBank) = random 360;
+showCinemaBorder false;
+cameraEffectEnableHUD true;
 
-GVAR(cam) setDir GVAR(camDir);
-[GVAR(cam), GVAR(camPitch), GVAR(camBank)] call BIS_fnc_setPitchBank;
+GVAR(handlePPColor) = ppEffectCreate ["colorCorrections", 1501];
+GVAR(handlePPColor) ppEffectEnable true;
+GVAR(handlePPColor) ppEffectAdjust [1,0.5,0,[0,0,0,0],[1,1,1,0],[1,1,1,1]];
+GVAR(handlePPColor) ppEffectCommit 0;
 
-GVAR(cam) camSetFov 1;
-GVAR(cam) cameraEffect ["External", "BACK"];
-GVAR(cam) camCommit 0;
+GVAR(activeCamera) setDir (_dirPitchBank select 0);
+[GVAR(activeCamera), _dirPitchBank select 1, _dirPitchBank select 2] call BIS_fnc_setPitchBank;

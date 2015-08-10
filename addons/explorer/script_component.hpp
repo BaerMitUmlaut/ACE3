@@ -1,4 +1,4 @@
-#define COMPONENT tagging
+#define COMPONENT explorer
 #include "\z\ace\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_BLANK
