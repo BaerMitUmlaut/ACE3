@@ -1,24 +1,27 @@
 /*
  * Author: esteldunedain, commy2
- *
  * Cycle through all grenades.
  *
- * Argument:
+ * Arguments:
+ * 0: Unit <OBJECT>
+ *
+ * Return Value:
  * None
  *
- * Return value:
- * None
+ * Example:
+ * [player] call ace_weaponselect_fnc_selectGrenadeAll
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
 private ["_text", "_nextMuzzle"];
 
-PARAMS_1(_unit);
+params ["_unit"];
 
 _nextMuzzle = ["All"] call FUNC(findNextGrenadeMuzzle);
 
 if (_nextMuzzle != "") then {
-
 
     private ["_magazines", "_magazine", "_count", "_return"];
     _magazines = GVAR(AllMagazines) select (GVAR(AllMuzzles) find _nextMuzzle);
@@ -37,7 +40,7 @@ if (_nextMuzzle != "") then {
     GVAR(CurrentGrenadeMuzzleFrag) = ""; GVAR(CurrentGrenadeMuzzleOther) = "";
 
     if (GVAR(DisplayText)) then {
-        _text = [localize "STR_ACE_WeaponSelect_NoGrenadesLeft", [1,0,0]] call EFUNC(common,stringToColoredText);
+        _text = [localize LSTRING(NoGrenadesLeft), [1,0,0]] call EFUNC(common,stringToColoredText);
         [composeText [lineBreak, _text]] call EFUNC(common,displayTextStructured);
     };
 };

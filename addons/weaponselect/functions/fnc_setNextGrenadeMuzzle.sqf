@@ -1,23 +1,24 @@
 /*
  * Author: esteldunedain
- *
  * Select the next grenade muzzle to throw.
  *
- * Argument:
- * muzzle name
+ * Arguments:
+ * 0: Unit <OBJECT>
+ * 1: Muzzlename <STRING>
  *
- * Return value:
+ * Return Value:
  * None
  *
+ * Example:
+ * [player, currentMuzzle player] call ace_weaponselect_fnc_setNextGrenadeMuzzle
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
-private ["_unit", "_muzzle"];
-
-_unit = _this select 0;
-_muzzle = _this select 1;
-
 private ["_uniformMags", "_vestMags", "_backpackMags", "_i", "_uniformMagsToRemove", "_vestMagsToRemove", "_backpackMagsToRemove", "_firstMagazine", "_throwMuzzleNames"];
+
+params ["_unit", "_muzzle"];
 
 _uniformMags = getMagazineCargo uniformContainer _unit;
 _vestMags = getMagazineCargo vestContainer _unit;

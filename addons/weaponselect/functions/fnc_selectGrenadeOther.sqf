@@ -1,19 +1,23 @@
 /*
  * Author: esteldunedain, commy2
- *
  * Cycle through non explosive grenades.
  *
- * Argument:
+ * Arguments:
+ * 0: Unit <OBJECT>
+ *
+ * Return Value:
  * None
  *
- * Return value:
- * None
+ * Example:
+ * [player] call ace_weaponselect_fnc_selectGrenadeOther
+ *
+ * Public: No
  */
 #include "script_component.hpp"
 
 private ["_nextMuzzle", "_text"];
 
-PARAMS_1(_unit);
+params ["_unit"];
 
 _nextMuzzle = ["NonFrag"] call FUNC(findNextGrenadeMuzzle);
 
@@ -36,7 +40,7 @@ if (_nextMuzzle != "") then {
     // There is a no muzzle with magazines --> select nothing
     GVAR(CurrentGrenadeMuzzleOther) = "";
     if (GVAR(DisplayText)) then {
-        _text = [localize "STR_ACE_WeaponSelect_NoMiscGrenadeLeft", [1,0,0]] call EFUNC(common,stringToColoredText);
+        _text = [localize LSTRING(NoMiscGrenadeLeft), [1,0,0]] call EFUNC(common,stringToColoredText);
         [composeText [lineBreak, _text]] call EFUNC(common,displayTextStructured);
     };
 };

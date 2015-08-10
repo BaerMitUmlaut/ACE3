@@ -58,6 +58,7 @@ if (alive _target) exitwith {
     _target setvariable [QGVAR(hasLostBlood), 0, true];
     _target setvariable [QGVAR(isBleeding), false, true];
     _target setvariable [QGVAR(hasPain), false, true];
+    _target setvariable [QGVAR(painSuppress), 0, true];
 
     // medication
     _allUsedMedication = _target getVariable [QGVAR(allUsedMedication), []];
@@ -67,4 +68,7 @@ if (alive _target) exitwith {
 
     // Resetting damage
     _target setDamage 0;
+
+    [_target, "activity", LSTRING(Activity_fullHeal), [[_caller] call EFUNC(common,getName)]] call FUNC(addToLog);
+    [_target, "activity_view", LSTRING(Activity_fullHeal), [[_caller] call EFUNC(common,getName)]] call FUNC(addToLog); // TODO expand message
 };

@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-PARAMS_3(_unit,_target,_state);
+params ["_unit", "_target","_state"];
 
 if (_state) then {
     if (_unit getVariable [QGVAR(isEscorting), false]) exitWith {};
@@ -30,7 +30,7 @@ if (_state) then {
     _unit setVariable [QGVAR(escortedUnit), _target, true];
 
     //Add Actionmenu to release captive
-    _actionID = _unit addAction [format ["<t color='#FF0000'>%1</t>", localize "STR_ACE_Captives_StopEscorting"],
+    _actionID = _unit addAction [format ["<t color='#FF0000'>%1</t>", localize LSTRING(StopEscorting)],
     {[(_this select 0), ((_this select 0) getVariable [QGVAR(escortedUnit), objNull]), false] call FUNC(doEscortCaptive);},
     nil, 20, false, true, "", QUOTE(!isNull (GETVAR(_target,QGVAR(escortedUnit),objNull)))];
 

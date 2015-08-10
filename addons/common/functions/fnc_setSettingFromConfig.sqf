@@ -12,7 +12,9 @@
  */
 #include "script_component.hpp"
 
-EXPLODE_1_PVT(_this,_optionEntry);
+PARAMS_1(_optionEntry);
+
+private ["_fnc_getValueWithType", "_value","_name", "_typeName", "_settingData", "_valueConfig", "_text"];
 
 _fnc_getValueWithType = {
     EXPLODE_2_PVT(_this,_optionEntry,_typeName);
@@ -56,14 +58,15 @@ if (isNil _name) then {
     // Add the setting to a list on the server
     // Set the variable to not forced
     /*_settingData = [
-        _name,
-        _typeName,
-        _isClientSettable,
-        _localizedName,
-        _localizedDescription,
-        _possibleValues,
-        _isForced,
-        _defaultValue
+        name,
+        typeName,
+        isClientSettable,
+        localizedName,
+        localizedDescription,
+        possibleValues,
+        isForced,
+        defaultValue,
+        category
     ];*/
     _settingData = [
         _name,
@@ -73,7 +76,8 @@ if (isNil _name) then {
         getText (_optionEntry >> "description"),
         getArray (_optionEntry >> "values"),
         getNumber (_optionEntry >> "force") > 0,
-        _value
+        _value,
+        getText (_optionEntry >> "category")
     ];
 
     //Strings in the values array won't be localized from the config, so just do that now:
