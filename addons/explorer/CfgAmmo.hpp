@@ -14,8 +14,8 @@ class CfgAmmo {
         whistleDist = 0;
         explosionTime = 10e10;
         timeToLive = 10e10;
-        deflecting = 60;
-        deflectionSlowDown = 0.5;
+        deflecting = 360;
+        deflectionSlowDown = 0.99;
         class CamShakeExplode {
             power = 0;
             duration = 0;

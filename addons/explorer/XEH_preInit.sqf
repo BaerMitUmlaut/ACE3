@@ -2,9 +2,12 @@
 
 ADDON = false;
 
+PREP(calculateSignalStrength);
 PREP(dialogExit);
 PREP(dialogInit);
+PREP(dialogPFH);
 PREP(initCamera);
+PREP(onBtnBack);
 PREP(onListSelect);
 PREP(onMouseDown);
 PREP(onMouseMove);

@@ -21,5 +21,3 @@ GVAR(activeExplorer) setVariable [QGVAR(cameraDirPitchBank), _dirPitchBank];
 
 GVAR(prevMouseX) = _mouseX;
 GVAR(prevMouseY) = _mouseY;
-
-true

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACE">
+    <Package name="Explorer">
+        <Key ID="STR_ACE_Explorer_pickUp">
+            <English>Pick up Explorer</English>
+            <German>Explorer aufheben</German>
+        </Key>
+        <Key ID="STR_ACE_Explorer_openDevice">
+            <English>Open Bounce Viewer</English>
+            <German>Bounce Viewer öffnen</German>
+        </Key>
+        <Key ID="STR_ACE_Explorer_explorerDesc">
+            <English>Tactical throwable camera</English>
+            <German>Taktische Wurfkamera</German>
+        </Key>
+    </Package>
+</Project>

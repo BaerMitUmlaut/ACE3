@@ -1,4 +1,12 @@
 #include "script_component.hpp"
+private ["_dialog"];
+
+_dialog = ctrlParent (_this select 0);
+
+(_dialog displayCtrl 3) ctrlShow true;
+(_dialog displayCtrl 4) ctrlShow false;
+(_dialog displayCtrl 5) ctrlShow true;
+(_dialog displayCtrl 6) ctrlShow false;
 
 if (!isNil QGVAR(activeExplorer)) then {
 	GVAR(activeExplorer) hideObject false;
@@ -11,5 +19,3 @@ if (!isNil QGVAR(activeExplorer)) then {
 	GVAR(handlePPColor) ppEffectEnable false;
 	GVAR(handlePPColor) ppEffectCommit 0;
 };
-
-[GVAR(dialogPFH)] call CBA_fnc_removePerFrameHandler;
