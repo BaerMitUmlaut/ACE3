@@ -228,7 +228,7 @@ class CfgVehicles {
 
         class EventHandlers: EventHandlers {
             class RHS_EventHandlers: RHS_EventHandlers {
-                getOut = QUOTE(if !(_this getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_mi8_doors});
+                getOut = QUOTE(if !((_this select 0) getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_mi8_doors});
             };
         };
     };
@@ -250,7 +250,7 @@ class CfgVehicles {
 
         class EventHandlers: EventHandlers {
             class RHS_EventHandlers: RHS_EventHandlers {
-                getOut = QUOTE(if !(_this getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_mi8_doors});
+                getOut = QUOTE(if !((_this select 0) getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_mi8_doors});
             };
         };
     };

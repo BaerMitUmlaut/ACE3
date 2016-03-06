@@ -87,16 +87,16 @@ class CfgVehicles {
         class UserActions: UserActions {
             class OpenCargoDoor;
             class CloseCargoDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorRB')] call FUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorRB')] call DFUNC(canCloseDoor));
             };
             class CloseCargoLDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorLB')] call FUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorLB')] call DFUNC(canCloseDoor));
             };
         };
 
         class EventHandlers: EventHandlers {
             class RHSUSF_EventHandlers: RHSUSF_EventHandlers {
-                getOut = QUOTE(if !(_this getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_uh60_doors});
+                getOut = QUOTE(if !((_this select 0) getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_uh60_doors});
             };
         };
     };
@@ -122,16 +122,15 @@ class CfgVehicles {
         class UserActions {
             class OpenCargoDoor;
             class CloseCargoDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorRB')] call FUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorRB')] call DFUNC(canCloseDoor));
             };
             class CloseCargoLDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorLB')] call FUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorLB')] call DFUNC(canCloseDoor));
             };
         };
-
         class EventHandlers: EventHandlers {
             class RHSUSF_EventHandlers {
-                getOut = QUOTE(if !(_this getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_uh60_doors});
+                getOut = QUOTE(if !((_this select 0) getVariable [ARR_2(QUOTE(QEGVAR(fastroping,doorsLocked)),false)]) then {_this call rhs_fnc_uh60_doors});
             };
         };
 
@@ -164,7 +163,7 @@ class CfgVehicles {
         class UserActions {
             class OpenCargoDoor;
             class CloseCargoDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'ramp_anim')] call FUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'ramp_anim')] call DFUNC(canCloseDoor));
             };
         };
     };
