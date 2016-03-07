@@ -87,10 +87,10 @@ class CfgVehicles {
         class UserActions: UserActions {
             class OpenCargoDoor;
             class CloseCargoDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorRB')] call DFUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorRB')] call FUNC(canCloseDoor));
             };
             class CloseCargoLDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorLB')] call DFUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorLB')] call FUNC(canCloseDoor));
             };
         };
 
@@ -122,10 +122,10 @@ class CfgVehicles {
         class UserActions {
             class OpenCargoDoor;
             class CloseCargoDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorRB')] call DFUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorRB')] call FUNC(canCloseDoor));
             };
             class CloseCargoLDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'doorLB')] call DFUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'doorLB')] call FUNC(canCloseDoor));
             };
         };
         class EventHandlers: EventHandlers {
@@ -163,7 +163,7 @@ class CfgVehicles {
         class UserActions {
             class OpenCargoDoor;
             class CloseCargoDoor: OpenCargoDoor {
-                condition = QUOTE([ARR_2(this,'ramp_anim')] call DFUNC(canCloseDoor));
+                condition = QUOTE([ARR_2(this,'ramp_anim')] call FUNC(canCloseDoor));
             };
         };
     };
